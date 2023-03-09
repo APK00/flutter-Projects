@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1094245155107",
+    "project_id": "mynotes-akp",
+    "storage_bucket": "mynotes-akp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094245155107:android:6d5c0b34cf05d3787d4c96",
+        "android_client_info": {
+          "package_name": "com.letsplay.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094245155107-m40afrfhj6j19979l4vdi12nkm95vijq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmIeQyFfplvdOoYrleFkmGwFu2TrkmVx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094245155107-m40afrfhj6j19979l4vdi12nkm95vijq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1094245155107-ok9jk2k7bhuepk5lcev8pop12n5nvfeo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.letsplay.mynotes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
