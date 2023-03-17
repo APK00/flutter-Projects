@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:mynotes/views/register_view.dart';
-import 'dart:developer' as devTools show log;
-
 import 'package:mynotes/constants/routes.dart';
+import '../utilities/show_error_dialog.dart';
 
 
 class Loginview extends StatefulWidget {
@@ -30,7 +29,7 @@ class _LoginviewState extends State<Loginview> {
     super.dispose();
   }
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     //return const Placeholder();
    return Scaffold(
     appBar: AppBar(title: const Text('Login'),
@@ -60,35 +59,49 @@ class _LoginviewState extends State<Loginview> {
                     hintText: 'please give your password'
                   ),
                 ),
-                TextButton(onPressed:() async {
+                TextButton(
+                  onPressed:() async {
                   
                   final email= _email.text;
                   final password= _password.text;
                   try{
-                     final userCredential=
+                    
                   await FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: email, 
-                    password: password
+                    password: password,
                     );
-
-                   Navigator.of(context).
-                   pushNamedAndRemoveUntil(
+                   Navigator.of(context).pushNamedAndRemoveUntil(
                     notesRoute,
-                     (route) => false
+                     (route) => false,
                      );
 
-                  }
-
-                  on FirebaseAuthException catch(e)
+                  }on FirebaseAuthException catch(e)
                   {
                      if(e.code=='user-not-found')
                      {
-                      devTools.log('user facked');
+                      await showErrorDialog(
+                        context,
+                       'User not found',
+                       );
                      }
-                     if(e.code== 'wrong-password')
+                     else if(e.code== 'wrong-password')
                      {
-                      devTools.log('wrong password');
+                       await showErrorDialog(
+                         context,
+                        'Wrong credentials',
+                        );
+                     }else{
+                      showErrorDialog(
+                        context,
+                      'Error: ${e.code}',
+                      );
+
                      }
+                  }catch (e){
+                   showErrorDialog(
+                        context,
+                      e.toString(),
+                      );
                   }
                   
                 
