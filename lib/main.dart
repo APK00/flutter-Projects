@@ -21,6 +21,7 @@ void main() {
       routes: {
         '/login/':(context)=> const Loginview(),
         '/register/':(context)=> const RegisterView(),
+        '/notes/':(context) => const NotesView(),
       },
     ));
 }
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
 
                 if(user.emailVerified)
                 {
-                  print('Email verifyed');
+                  devTools.log('Email verifyed');
                   return const NotesView();
                 }else{
                 return const VerifyEmailView();
@@ -87,8 +88,10 @@ class _NotesViewState extends State<NotesView> {
                   final shouldLogOut= await showLogOutDialog(context);
                   if(shouldLogOut){
                     await FirebaseAuth.instance.signOut();
-                    Navigator.of(context).
-                      pushNamedAndRemoveUntil('/login/', (_) => false,);
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/login/',
+                       (_) => false,
+                       );
                   }
                   devTools.log(shouldLogOut.toString());
                   break;
