@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 //import 'package:mynotes/views/register_view.dart';
 import 'dart:developer' as devTools show log;
 
+import 'package:mynotes/constants/routes.dart';
+
 
 class Loginview extends StatefulWidget {
   const Loginview({super.key});
@@ -71,7 +73,7 @@ class _LoginviewState extends State<Loginview> {
 
                    Navigator.of(context).
                    pushNamedAndRemoveUntil(
-                    '/notes/',
+                    notesRoute,
                      (route) => false
                      );
 
@@ -95,7 +97,7 @@ class _LoginviewState extends State<Loginview> {
                 style: TextStyle(color: Colors.blueAccent),),),
                 TextButton(onPressed: (){
                     Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/register/', 
+                      registerRoute, 
                       (route) => false);
                       
                 }, 
